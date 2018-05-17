@@ -1,0 +1,55 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm"
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+//compileKotlin {
+//    kotlinOptions.freeCompilerArgs = [
+//            "-parameters"
+//    ]
+//}
+
+dependencies {
+
+    // HERE
+    // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+    compileOnly group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen
+    annotationProcessor group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: '5.3.0.Final'
+    // HERE
+
+
+
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.41'
+
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk8
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+     //https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    runtimeOnly 'org.hibernate:hibernate-validator:5.3.5.Final'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator-cdi
+    runtimeOnly 'org.hibernate:hibernate-validator-cdi:5.3.5.Final'
+
+
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    runtimeOnly 'com.fasterxml.jackson.core:jackson-core:2.8.9'
+    runtimeOnly 'com.fasterxml.jackson.module:jackson-module-parameter-names:2.8.9'
+    runtimeOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.9'
+    runtimeOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9'
+
+
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}

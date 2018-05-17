@@ -1,0 +1,8 @@
+rootProject.name = 'gradle_spek'
+
+["new"].forEach {
+    for (f in file(it).listFiles({ it.isDirectory() } as FileFilter)) {
+        include(":${f.name}")
+        project(":${f.name}").projectDir = f
+    }
+}

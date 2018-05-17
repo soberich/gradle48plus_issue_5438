@@ -1,0 +1,73 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.41"
+    id 'java'
+    id 'war'
+    id 'idea'
+}
+
+repositories {
+    jcenter()
+}
+sourceSets.main.java.srcDir(file("$buildDir/classes/java/main"))
+idea.module.generatedSourceDirs.add(file("$buildDir/classes/java/main"))
+
+dependencies {
+
+    // HERE
+    // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+    compileOnly group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen
+    annotationProcessor group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: '5.3.0.Final'
+    // HERE
+
+
+    implementation(project(":ap"))
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+
+    // https://mvnrepository.com/artifact/javax.validation/validation-api
+    compileOnly group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+
+     //https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    runtimeOnly 'org.hibernate:hibernate-validator:5.3.5.Final'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator-cdi
+    runtimeOnly 'org.hibernate:hibernate-validator-cdi:5.3.5.Final'
+
+    // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+    compileOnly group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0'
+
+    // https://mvnrepository.com/artifact/javax.enterprise/cdi-api
+    compileOnly group: 'javax.enterprise', name: 'cdi-api', version: '1.2'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    runtimeOnly 'com.fasterxml.jackson.core:jackson-core:2.8.9'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.9'
+
+    implementation 'com.fasterxml.jackson.module:jackson-module-parameter-names:2.8.9'
+    runtimeOnly 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.9'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9'
+
+    testCompileOnly 'org.jetbrains:annotations:13.0'
+    testImplementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.41'
+
+    implementation 'javax.validation:validation-api:1.1.0.Final'
+    testImplementation 'org.hibernate:hibernate-validator:5.3.5.Final'
+
+    testImplementation 'org.jetbrains.spek:spek-api:1.1.5'
+
+    testImplementation("org.jetbrains.spek:spek-subject-extension:1.1.5")
+    testImplementation("org.jetbrains.spek:spek-junit-platform-engine:1.1.5")
+    testImplementation 'org.jetbrains.kotlin:kotlin-test:1.2.41'
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect")
+
+}
+
+compileJava {
+    options.compilerArgs << '-parameters' << '-Xlint' << '-Xlint:processing' << '-Xdiags:verbose' << '-Adebug=true' << '-AaddGenerationDate=true'
+}
