@@ -8,8 +8,14 @@ plugins {
 repositories {
     jcenter()
 }
-sourceSets.main.java.srcDirs += file("$buildDir/classes/java/main")
-idea.module.generatedSourceDirs.add(file("$buildDir/classes/java/main"))
+//sourceSets.main.java.srcDirs += file("$buildDir/classes/java/main")
+//idea.module.generatedSourceDirs.add(file("$buildDir/classes/java/main"))
+//idea.module.sourceDirs.add(file("$buildDir/classes/java/main"))
+//idea {
+//    module {
+//        sourceDirs += file("$buildDir/classes/java/main")
+//    }
+//}
 
 dependencies {
 

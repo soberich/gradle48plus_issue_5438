@@ -11,8 +11,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Base {
     @Id
-    Long id;
+    Long person;
 
     @ManyToMany
-    Person person;
+    Person user;
 }
